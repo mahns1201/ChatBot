@@ -14,7 +14,7 @@ def coffee():
     coffee_menu = req["action"]["detailParams"]["coffee_menu"]["value"]    # read json file
                 # req["action"]["detailParams"][파리미터 명]["value"]
 
-    url = https://github.com/meotitda/DICTIONARY/blob/master/DIC/A/AST.md
+    url = "https://github.com/meotitda/DICTIONARY/blob/master/DIC/A/AST.md"
     # answer = 
 
     res = {
