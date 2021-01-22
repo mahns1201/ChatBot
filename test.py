@@ -11,7 +11,7 @@ def helllo():
 def coffee():
     req = request.get_json()
 
-    coffee_menu = req["action"]["detailParams"]["coffee_menu"]["value"]    # read json file
+    url = req["action"]["detailParams"]["words"]["value"]    # read json file
                 # req["action"]["detailParams"][파리미터 명]["value"]
 
     url = "https://github.com/meotitda/DICTIONARY/blob/master/DIC/A/AST.md"
