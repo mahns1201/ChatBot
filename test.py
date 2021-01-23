@@ -2,48 +2,36 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route("/")
+def make_url(input_text):
+    url = "https://github.com/meotitda/DICTIONARY/blob/master/DIC/"
+    
+    input_text = input_text.upper()
+    detail = input_text[0] + '/' + input_text + '.md'
 
-def helllo():
-    return "hello, flask!"
+    url = url + detail
 
-@app.route("/coffee", methods=['POST'])
-def coffee():
+    return url
+
+@app.route("/words", methods=['POST'])
+def movies():
     req = request.get_json()
+    
+    input_text = req['userRequest']['utterance'] # 사용자가 전송한 실제 메시지
+    
+    url = make_url(input_text)
 
-    url = req["action"]["detailParams"]["words"]["value"]    # read json file
-                # req["action"]["detailParams"][파리미터 명]["value"]
-
-    url = "https://github.com/meotitda/DICTIONARY/blob/master/DIC/A/AST.md"
-    # answer = 
-
+    # 카드 리스트형 응답용 메시지
     res = {
         "version": "2.0",
         "template": {
             "outputs": [
                 {
-                    "basicCard": {
-                        "title": "title",
-                        "description": "description",
-                        "thumbnail": {
-                            "imageUrl": url
-                        },
-                    },
-                    "profile": {
-                        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4BJ9LU4Ikr_EvZLmijfcjzQKMRCJ2bO3A8SVKNuQ78zu2KOqM",
-                        "nickname": "보물상자"
-                    },
-                    "social": {
-                        "like": 1238,
-                        "comment": 8,
-                        "share": 780
+                    "simpleText": {
+                        "text": url
                     }
                 }
             ]
         }
-    }
+    }            
 
     return jsonify(res)
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, threaded=True)
