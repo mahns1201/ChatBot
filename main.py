@@ -1,54 +1,39 @@
 from flask import Flask, request, jsonify
-import sys
+
 app = Flask(__name__)
 
+@app.route("/")
 
-@app.route('/keyboard')
-def Keyboard():
-    dataSend = {
+def helllo():
+    return "hello, flask!"
+
+@app.route("/coffee", methods=['POST'])
+def coffee():
+    req = request.get_json()
+
+    coffee_menu = req["action"]["detailParams"]["coffee_menu"]["value"]    # read json file
+                # req["action"]["detailParams"][파리미터 명]["value"]
+
+    answer = coffee_menu
+    # answer = "아메리카노"
+
+    res = {
+        "version": "2.0",
+        "template": {
+            "outputs": [
+                {
+                    "simpleText": {
+                        "text": answer
+                    }
+                }
+            ]
+        }
     }
-    return jsonify(dataSend)
 
-@app.route('/message', methods=['POST'])
-def Message():
-    
-    content = request.get_json()
-    content = content['userRequest']
-    content = content['utterance']
-    
-    if content == u"안녕":
-        dataSend = {
-            "version": "2.0",
-            "template": {
-                "outputs": [
-                    {
-                        "carousel": {
-                            "type" : "basicCard",
-                            "items": [
-                                {
-                                    "title" : "",
-                                    "description" : "안녕"
-                                }
-                            ]
-                        }
-                    }
-                ]
-            }
-        }
-    else :
-        dataSend = {
-            "version": "2.0",
-            "template": {
-                "outputs": [
-                    {
-                        "simpleText":{
-                            "text" : "아직 공부하고있습니다."
-                        }
-                    }
-                ]
-            }
-        }
-    return jsonify(dataSend)
+    return jsonify(res)
 
-if __name__=="__main__":
-    app.run(host = "0.0.0.0", port = 5000)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, threaded=True)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000, threaded=True)
