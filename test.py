@@ -30,11 +30,7 @@ def movies():
                 "title": "보물상자",
                 "description": "보물상자 안에는 뭐가 있을까",
                 "thumbnail": {
-                    "imageUrl": "http://k.kakaocdn.net/dn/83BvP/bl20duRC1Q1/lj3JUcmrzC53YIjNDkqbWK/i_6piz1p.jpg"
-                },
-                "profile": {
-                    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4BJ9LU4Ikr_EvZLmijfcjzQKMRCJ2bO3A8SVKNuQ78zu2KOqM",
-                    "nickname": "보물상자"
+                    "imageUrl": url
                 },
                 "social": {
                     "like": 1238,
