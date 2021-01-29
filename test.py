@@ -25,16 +25,15 @@ def movies():
         "version": "2.0",
         "template": {
             "outputs": [
-                "basicCard": {
-                    "title": "보물상자",
-                    "description": "보물상자 안에는 뭐가 있을까",
-                    "thumbnail": {
-                        "imageUrl": url
-                    },
+                {
+                    "simpleImage": {
+                        "imageUrl": url,
+                        "altText": "보물상자입니다"
+                    }
                 }
             ]
         }
-    }            
+    }       
 
     return jsonify(res)
 
