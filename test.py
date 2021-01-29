@@ -27,8 +27,8 @@ def movies():
             "outputs": [
                 {
                     "simpleImage": {
-                        "imageUrl": url,
-                        "altText": "보물상자입니다"
+                        "imageUrl": "http://k.kakaocdn.net/dn/83BvP/bl20duRC1Q1/lj3JUcmrzC53YIjNDkqbWK/i_6piz1p.jpg",
+                        "altText": url
                     }
                 }
             ]
